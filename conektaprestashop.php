@@ -23,7 +23,7 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
-class Conekta_Prestashop extends PaymentModule
+class ConektaPrestashop extends PaymentModule
 //class ConektaPrestashop extends PaymentModule
 {
     protected $html = '';
@@ -36,7 +36,7 @@ class Conekta_Prestashop extends PaymentModule
     
     public function __construct()
     {
-        $this->name                   = 'conekta_prestashop';
+        $this->name                   = 'conektaprestashop';
         $this->tab                    = 'payments_gateways';
         $this->version                = '1.1.0';
         $this->ps_versions_compliancy = array(
@@ -212,7 +212,7 @@ class Conekta_Prestashop extends PaymentModule
         $state->name        = $names;
         $state->color       = '#4169E1';
         $state->send_email  = true;
-        $state->module_name = 'conekta_prestashop';
+        $state->module_name = 'conektaprestashop';
         $templ              = array();
         
         foreach ($languages as $lang) {
@@ -265,7 +265,7 @@ class Conekta_Prestashop extends PaymentModule
         $state->name        = $names;
         $state->color       = '#4169E1';
         $state->send_email  = true;
-        $state->module_name = 'conekta_prestashop';
+        $state->module_name = 'conektaprestashop';
         $templ              = array();
         
         foreach ($languages as $lang) {
@@ -411,28 +411,28 @@ class Conekta_Prestashop extends PaymentModule
     {
         if (Tools::isSubmit('btnSubmit')) {
             if (!Tools::getValue('PAYEE_NAME')) {
-                $this->postErrors[] = $this->trans('The "Payee" field is required.', array(), 'Modules.Conekta_Prestashop.Admin');
+                $this->postErrors[] = $this->trans('The "Payee" field is required.', array(), 'Modules.ConektaPrestashop.Admin');
             } elseif (!Tools::getValue('PAYEE_ADDRESS')) {
-                $this->postErrors[] = $this->trans('The "Address" field is required.', array(), 'Modules.Conekta_Prestashop.Admin');
+                $this->postErrors[] = $this->trans('The "Address" field is required.', array(), 'Modules.ConektaPrestashop.Admin');
             }
             if (!Tools::getValue('WEB_HOOK')) {
-                $this->postErrors[] = $this->trans('The "Web Hook" field is required.', array(), 'Modules.Conekta_Prestashop.Admin');
+                $this->postErrors[] = $this->trans('The "Web Hook" field is required.', array(), 'Modules.ConektaPrestashop.Admin');
             }
             
             if (!Tools::getValue('TEST_PRIVATE_KEY')) {
-                $this->postErrors[] = $this->trans('The "Test Private Key" field is required.', array(), 'Modules.Conekta_Prestashop.Admin');
+                $this->postErrors[] = $this->trans('The "Test Private Key" field is required.', array(), 'Modules.ConektaPrestashop.Admin');
             }
             
             if (!Tools::getValue('TEST_PUBLIC_KEY')) {
-                $this->postErrors[] = $this->trans('The "Test Public Key" field is required.', array(), 'Modules.Conekta_Prestashop.Admin');
+                $this->postErrors[] = $this->trans('The "Test Public Key" field is required.', array(), 'Modules.ConektaPrestashop.Admin');
             }
             
             if (Tools::getValue('LIVE_PRIVATE_KEY') && !Tools::getValue('LIVE_PUBLIC_KEY')) {
-                $this->postErrors[] = $this->trans('The "Live Public Key" field is required.', array(), 'Modules.Conekta_Prestashop.Admin');
+                $this->postErrors[] = $this->trans('The "Live Public Key" field is required.', array(), 'Modules.ConektaPrestashop.Admin');
             }
             
             if (!Tools::getValue('LIVE_PRIVATE_KEY') && Tools::getValue('LIVE_PUBLIC_KEY')) {
-                $this->postErrors[] = $this->trans('The "Live Private Key" field is required.', array(), 'Modules.Conekta_Prestashop.Admin');
+                $this->postErrors[] = $this->trans('The "Live Private Key" field is required.', array(), 'Modules.ConektaPrestashop.Admin');
             }
         }
     }
@@ -487,20 +487,20 @@ class Conekta_Prestashop extends PaymentModule
         $fields_form = array(
             'form' => array(
                 'legend' => array(
-                    'title' => $this->trans('Contact details', array(), 'Modules.Conekta_Prestashop.Admin'),
+                    'title' => $this->trans('Contact details', array(), 'Modules.ConektaPrestashop.Admin'),
                     'icon' => 'icon-envelope'
                 ),
                 'input' => array(
                     array(
                         'type' => 'text',
-                        'label' => $this->trans('Payee (name)', array(), 'Modules.Conekta_Prestashop.Admin'),
+                        'label' => $this->trans('Payee (name)', array(), 'Modules.ConektaPrestashop.Admin'),
                         'name' => 'PAYEE_NAME',
                         'required' => true
                     ),
                     array(
                         'type' => 'textarea',
-                        'label' => $this->trans('Address', array(), 'Modules.Conekta_Prestashop.Admin'),
-                        'desc' => $this->trans('Address where the check should be sent to.', array(), 'Modules.Conekta_Prestashop.Admin'),
+                        'label' => $this->trans('Address', array(), 'Modules.ConektaPrestashop.Admin'),
+                        'desc' => $this->trans('Address where the check should be sent to.', array(), 'Modules.ConektaPrestashop.Admin'),
                         'name' => 'PAYEE_ADDRESS',
                         'required' => true
                     ),
@@ -526,7 +526,7 @@ class Conekta_Prestashop extends PaymentModule
                     ),
                     array(
                         'type' => 'text',
-                        'label' => $this->trans('Webhook', array(), 'Modules.Conekta_Prestashop.Admin'),
+                        'label' => $this->trans('Webhook', array(), 'Modules.ConektaPrestashop.Admin'),
                         'name' => 'WEB_HOOK',
                         'required' => true
                     ),
@@ -577,25 +577,25 @@ class Conekta_Prestashop extends PaymentModule
                     ),
                     array(
                         'type' => 'text',
-                        'label' => $this->trans('Test Private Key', array(), 'Modules.Conekta_Prestashop.Admin'),
+                        'label' => $this->trans('Test Private Key', array(), 'Modules.ConektaPrestashop.Admin'),
                         'name' => 'TEST_PRIVATE_KEY',
                         'required' => true
                     ),
                     array(
                         'type' => 'text',
-                        'label' => $this->trans('Test Public Key', array(), 'Modules.Conekta_Prestashop.Admin'),
+                        'label' => $this->trans('Test Public Key', array(), 'Modules.ConektaPrestashop.Admin'),
                         'name' => 'TEST_PUBLIC_KEY',
                         'required' => true
                     ),
                     array(
                         'type' => 'password',
-                        'label' => $this->trans('Live Private Key', array(), 'Modules.Conekta_Prestashop.Admin'),
+                        'label' => $this->trans('Live Private Key', array(), 'Modules.ConektaPrestashop.Admin'),
                         'name' => 'LIVE_PRIVATE_KEY',
                         'required' => true
                     ),
                     array(
                         'type' => 'password',
-                        'label' => $this->trans('Live Public Key', array(), 'Modules.Conekta_Prestashop.Admin'),
+                        'label' => $this->trans('Live Public Key', array(), 'Modules.ConektaPrestashop.Admin'),
                         'name' => 'LIVE_PUBLIC_KEY',
                         'required' => true
                     )
@@ -702,7 +702,7 @@ class Conekta_Prestashop extends PaymentModule
         
         
         if (empty($url)) {
-            $url = _PS_BASE_URL_ . __PS_BASE_URI__ . "modules/conekta_prestashop/notification.php";
+            $url = _PS_BASE_URL_ . __PS_BASE_URI__ . "modules/conektaprestashop/notification.php";
         }
         
         if (Tools::isSubmit('btnSubmit') && Tools::getValue('TEST_PUBLIC_KEY') && Tools::getValue('TEST_PRIVATE_KEY')) {
@@ -915,7 +915,7 @@ class Conekta_Prestashop extends PaymentModule
             'test_private_key' => Configuration::get('TEST_PRIVATE_KEY')
         ));
         
-        return $this->context->smarty->fetch('module:conekta_prestashop/views/templates/front/payment_form.tpl');
+        return $this->context->smarty->fetch('module:conektaprestashop/views/templates/front/payment_form.tpl');
     }
     
     public function processPayment($type, $token, $msi)
@@ -998,7 +998,7 @@ class Conekta_Prestashop extends PaymentModule
                 $reference                 = $charge_response->payment_method->reference;
                 $order_status              = (int) Configuration::get('waiting_cash_payment');
                 $message                   = $this->l('Conekta Transaction Details:') . "\n\n" . $this->l('Reference:') . ' ' . $reference . "\n" . $this->l('Barcode:') . ' ' . $barcode_url . "\n" . $this->l('Amount:') . ' ' . ($charge_response->amount * 0.01) . "\n" . $this->l('Processed on:') . ' ' . strftime('%Y-%m-%d %H:%M:%S', $charge_response->created_at) . "\n" . $this->l('Currency:') . ' ' . Tools::strtoupper($charge_response->currency) . "\n" . $this->l('Mode:') . ' ' . ($charge_response->livemode == 'true' ? $this->l('Live') : $this->l('Test')) . "\n";
-                $checkout                  = Module::getInstanceByName('conekta_prestashop');
+                $checkout                  = Module::getInstanceByName('conektaprestashop');
                 $checkout->extra_mail_vars = array(
                     '{barcode}' => (string) $reference
                 );
@@ -1014,7 +1014,7 @@ class Conekta_Prestashop extends PaymentModule
                 $reference       = $charge_response->payment_method->clabe;
                 $order_status    = (int) Configuration::get('waiting_spei_payment');
                 $message         = $this->l('Conekta Transaction Details:') . "\n\n" . $this->l('Reference:') . ' ' . $reference . "\n" . $this->l('Amount:') . ' ' . ($charge_response->amount * 0.01) . "\n" . $this->l('Processed on:') . ' ' . strftime('%Y-%m-%d %H:%M:%S', $charge_response->created_at) . "\n" . $this->l('Currency:') . ' ' . Tools::strtoupper($charge_response->currency) . "\n" . $this->l('Mode:') . ' ' . ($charge_response->livemode == 'true' ? $this->l('Live') : $this->l('Test')) . "\n";
-                $checkout        = Module::getInstanceByName('conekta_prestashop');
+                $checkout        = Module::getInstanceByName('conektaprestashop');
                 
                 $checkout->extra_mail_vars = array(
                     '{receiving_account_number}' => (string) $reference
