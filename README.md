@@ -21,7 +21,7 @@ Installation
 
 There is no custom installation for this plugin, just the default:
 
-  * Compress the folder conekta_prestashop.
+  * Compress the folder conektaprestashop.
   * Go to the modules section and clic on 'Add a new module'.
   * Select the compressed folder.
   * Search for conekta_prestashop in the modules list.
